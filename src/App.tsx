@@ -7,37 +7,38 @@ const data = [
   {
     id: 1,
     name: "ฉบับปรับปรุง",
-    url: "/src/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
+    url: "/public/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
   },
   {
     id: 2,
     name: "Enchanted",
-    url: "/src/assets/spotifydown.com - Enchanted.mp3",
+    url: "/public/assets/spotifydown.com - Enchanted.mp3",
   },
   {
     id: 3,
     name: "Even For A Moment",
-    url: "/src/assets/spotifydown.com - Even For A Moment.mp3",
+    url: "/public/assets/spotifydown.com - Even For A Moment.mp3",
   },
   {
     id: 4,
     name: "Love, Maybe",
-    url: "/src/assets/spotifydown.com - Love, Maybe.mp3",
+    url: "/public/assets/spotifydown.com - Love, Maybe.mp3",
   },
   {
     id: 5,
     name: "One Day",
-    url: "/src/assets/spotifydown.com - One Day.mp3",
+    url: "/public/assets/spotifydown.com - One Day.mp3",
   },
   {
     id: 6,
     name: "Sweet",
-    url: "/src/assets/spotifydown.com - Sweet.mp3",
+    url: "/public/assets/spotifydown.com - Sweet.mp3",
   },
+
   {
     id: 7,
     name: "Bloody Mary",
-    url: "/src/assets/spotifydown.com - Bloody Mary.mp3",
+    url: "/public/assets/spotifydown.com - Bloody Mary.mp3",
   },
 ];
 
@@ -160,12 +161,9 @@ function App() {
               <div className="flex text-base items-center justify-between gap-x-4">
                 <div>{loadingTimes(currentTime)}</div>
                 <Slider
-                  className="MuiSlider-thumb"
                   color="secondary"
-                  size="small"
                   style={{ width: "70%", height: "12px" }}
-                  sx={{ color: "#EA8FEA" }}
-                  aria-label="Volume"
+
 
                 onChange={onChange}
                 value={percent}
