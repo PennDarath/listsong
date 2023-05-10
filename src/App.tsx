@@ -137,7 +137,7 @@ function App() {
             <div key={s.id}>
               <button onClick={() => chooseSong(s.id)}>
                 <p
-                  className="py-2 font-extrabold mb-5 text-2xl hover:scale-125 duration-300 active:scale-105 px-4 rounded"
+                  className="py-2 font-extrabold mb-2 text-xl hover:scale-125 duration-300 active:scale-105 px-4 rounded"
                   style={{
                     color: song.id === s.id ? "white" : "black",
                     backgroundColor: song.id === s.id ? "black" : "",
@@ -153,7 +153,7 @@ function App() {
           ))}
         </div>
         <div className="grid  justify-center items-center w-fit text-3xl text-white bg-black rounded-lg">
-          <div className="border-4 border-white w-full pb-8 pt-6 gap-x-5 px-24 rounded-lg">
+          <div className="border-4 border-white w-full pb-8 pt-5 gap-x-5 px-24 rounded-lg">
           <div className="lg:w-[20vw] w-[50vw] overflow-hidden rounded-lg">
             <p className="text-xl w-full text-center pb-7 animate-x">
               {song.name}
