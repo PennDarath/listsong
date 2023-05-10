@@ -7,38 +7,38 @@ const data = [
   {
     id: 1,
     name: "ฉบับปรับปรุง",
-    url: "/public/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
+    url: "/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
   },
   {
     id: 2,
     name: "Enchanted",
-    url: "/public/assets/spotifydown.com - Enchanted.mp3",
+    url: "/assets/spotifydown.com - Enchanted.mp3",
   },
   {
     id: 3,
     name: "Even For A Moment",
-    url: "/public/assets/spotifydown.com - Even For A Moment.mp3",
+    url: "/assets/spotifydown.com - Even For A Moment.mp3",
   },
   {
     id: 4,
     name: "Love, Maybe",
-    url: "/public/assets/spotifydown.com - Love, Maybe.mp3",
+    url: "/assets/spotifydown.com - Love, Maybe.mp3",
   },
   {
     id: 5,
     name: "One Day",
-    url: "/public/assets/spotifydown.com - One Day.mp3",
+    url: "/assets/spotifydown.com - One Day.mp3",
   },
   {
     id: 6,
     name: "Sweet",
-    url: "/public/assets/spotifydown.com - Sweet.mp3",
+    url: "/assets/spotifydown.com - Sweet.mp3",
   },
 
   {
     id: 7,
     name: "Bloody Mary",
-    url: "/public/assets/spotifydown.com - Bloody Mary.mp3",
+    url: "/assets/spotifydown.com - Bloody Mary.mp3",
   },
 ];
 
