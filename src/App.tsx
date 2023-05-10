@@ -137,12 +137,12 @@ function App() {
             <div key={s.id}>
               <button onClick={() => chooseSong(s.id)}>
                 <p
-                  className="py-2 font-extrabold mb-2 text-xl hover:scale-125 duration-300 active:scale-105 px-4 rounded"
+                  className="py-2 font-extrabold mb-5 text-xl hover:scale-110  active:scale-150 px-4 duration-300 rounded"
                   style={{
                     color: song.id === s.id ? "white" : "black",
                     backgroundColor: song.id === s.id ? "black" : "",
                     borderColor: song.id === s.id ? "white" : "",
-                    borderWidth: song.id === s.id ? "3px" : "",
+
                     borderRadius: song.id === s.id ? "10px" : "",
                   }}
                 >
