@@ -163,8 +163,6 @@ function App() {
                 <Slider
                   color="secondary"
                   style={{ width: "70%", height: "12px" }}
-
-
                 onChange={onChange}
                 value={percent}
                 />
