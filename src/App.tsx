@@ -13,18 +13,18 @@ import { Slider } from "@mui/material";
 const data = [
   {
     id: 1,
-    name: "ฉบับปรับปรุง",
-    url: "/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
+     name: "Bloody Mary",
+    url: "/assets/spotifydown.com - Bloody Mary.mp3",
   },
   {
     id: 2,
-    name: "Enchanted",
-    url: "/assets/spotifydown.com - Enchanted.mp3",
+    name: "Naruto Opening 3",
+    url: "/assets/spotifydown.com - 青春狂騒曲.mp3",
   },
   {
     id: 3,
-    name: "Even For A Moment",
-    url: "/assets/spotifydown.com - Even For A Moment.mp3",
+    name: "Sparkle ost. Your Name",
+    url: "/public/assets/spotifydown.com - Sparkle - movie ver..mp3",
   },
   {
     id: 4,
@@ -44,9 +44,10 @@ const data = [
 
   {
     id: 7,
-    name: "Bloody Mary",
-    url: "/assets/spotifydown.com - Bloody Mary.mp3",
+    name: "ฉบับปรับปรุง",
+    url: "/assets/spotifydown.com - ฉบับปรับปรุง.mp3",
   },
+
 ];
 
 function App() {
@@ -160,7 +161,7 @@ function App() {
 
   return (
     <div
-      className="h-screen w-screen bg-black opacity-80 pt-5 "
+      className=" w-screen h-screen bg-black opacity-80 pt-5 "
       style={{ fontFamily: "monospace" }}
     >
       <div className="grid justify-center">
@@ -245,7 +246,6 @@ function App() {
             </div>
           ))}
         </div>
-        ;
       </div>
     </div>
   );
