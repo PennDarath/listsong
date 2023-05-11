@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import { FiPause, FiPlay, FiSkipBack, FiSkipForward } from "react-icons/fi";
+import {
+  FiPause,
+  FiPlay,
+  FiRepeat,
+  FiShuffle,
+  FiSkipBack,
+  FiSkipForward,
+} from "react-icons/fi";
 import { Slider } from "@mui/material";
 
 const data = [
@@ -48,20 +55,43 @@ function App() {
   const [percent, setPercent] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [shufflee, setShufflee] = useState(false);
+  const [repeat, setRepeat] = useState(false);
+
+  const audioEl = useRef<HTMLAudioElement>(null);
+
+  const shuffle = () => {
+    setShufflee(!shufflee);
+  };
+
+  const repeatSong = () => {
+    setRepeat(!repeat);
+    
+  };
+
+  useEffect(() => {
+    if (repeat) {
+      audioEl.current?.setAttribute("loop", "true");
+    } else {
+      audioEl.current?.removeAttribute("loop");
+    }
+  }, [repeat, song]);
+
+  const skipShuffle = () => {
+    const index = Math.floor(Math.random() * data.length);
+    console.log(index);
+    setSong(data[index]);
+  };
 
   const loadingTimes = (time: number) => {
     return (
-      Math.floor(time / 60) +
-      ":" +
-      ("0" + Math.floor(time % 60)).slice(-2)
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   };
 
   const allTimes = (time: number) => {
     return (
-      Math.floor(time / 60) +
-      ":" +
-      ("0" + Math.floor(time % 60)).slice(-2)
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
     );
   };
 
@@ -125,12 +155,15 @@ function App() {
     const percent = ((e.currentTarget.currentTime / duration) * 100).toFixed(0);
     setPercent(+percent);
     setCurrentTime(e.currentTarget.currentTime);
-
   };
 
-  const audioEl = useRef<HTMLAudioElement>(null);
+  //  audioEl.current?.addEventListener('ended', skipSong) when event ended happened will skip to next song
+
   return (
-    <div className="h-screen w-screen bg-slate-300 pt-5 " style={{fontFamily: "monospace"}}>
+    <div
+      className="h-screen w-screen bg-slate-300 pt-5 "
+      style={{ fontFamily: "monospace" }}
+    >
       <div className="grid justify-center">
         <div className="text-center ">
           {data.map((s) => (
@@ -154,48 +187,66 @@ function App() {
         </div>
         <div className="grid  justify-center items-center w-fit text-3xl text-white bg-black rounded-lg">
           <div className="border-4 border-white w-full pb-8 pt-5 gap-x-5 px-24 rounded-lg">
-          <div className="lg:w-[20vw] w-[50vw] overflow-hidden rounded-lg">
-            <p className="text-xl w-full text-center pb-7 animate-x">
-              {song.name}
+            <div className="lg:w-[20vw] w-[50vw] overflow-hidden rounded-lg">
+              <p className="text-xl w-full text-center pb-7 animate-x">
+                {song.name}
               </p>
               <div className="flex text-base items-center justify-between gap-x-4">
                 <div>{loadingTimes(currentTime)}</div>
                 <Slider
                   color="secondary"
                   style={{ width: "70%", height: "12px" }}
-                onChange={onChange}
-                value={percent}
+                  onChange={onChange}
+                  value={percent}
                 />
                 <div>{allTimes(duration)}</div>
-                </div>
-            <div className="flex justify-between ">
-              <button
-                className="hover:scale-110 duration-300 active:scale-x-150"
-                onClick={previosSong}
-              >
-                <FiSkipBack />
-              </button>
-                <audio src={song.url} ref={audioEl} onLoadedData={(e) => {
-                  setDuration(e.currentTarget.duration)
-                }}
+              </div>
+              <div className="flex justify-between ">
+                <button
+                  style={{ color: shufflee ? "red" : "" }}
+                  className="text-red text-xl"
+                  onClick={shuffle}
+                >
+                  <FiShuffle />
+                </button>
+                <button
+                  className="hover:scale-110 duration-300 active:scale-x-150"
+                  onClick={previosSong}
+                >
+                  <FiSkipBack />
+                </button>
+                <audio
+                  onEnded={shufflee ? skipShuffle : skipSong}
+                  src={song.url}
+                  ref={audioEl}
+                  onLoadedData={(e) => {
+                    setDuration(e.currentTarget.duration);
+                  }}
                   onTimeUpdate={getCurrentDuration}
                 />
-              <button
-                className="hover:scale-110 duration-300 active:scale-x-150 text-5xl"
-                onClick={toggleAudio}
-              >
-                {isPlaying ? <FiPause /> : <FiPlay />}
-              </button>
-              <button
-                className="hover:scale-110 duration-300 active:scale-x-150"
-                onClick={skipSong}
-              >
-                <FiSkipForward />
-              </button>
+                <button
+                  className="hover:scale-110 duration-300 active:scale-x-150 text-3xl"
+                  onClick={toggleAudio}
+                >
+                  {isPlaying ? <FiPause /> : <FiPlay />}
+                </button>
+                <button
+                  className="hover:scale-110 duration-300 active:scale-x-150"
+                  onClick={shufflee ? skipShuffle : skipSong}
+                >
+                  <FiSkipForward />
+                </button>
+                <button
+                  className="text-red text-xl"
+                  style={{ color: repeat ? "red" : "" }}
+                  onClick={() => repeatSong()}
+                >
+                  <FiRepeat />
+                </button>
+              </div>
             </div>
           </div>
-          </div>
-          </div>
+        </div>
       </div>
     </div>
   );
