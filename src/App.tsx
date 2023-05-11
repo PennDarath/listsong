@@ -66,7 +66,6 @@ function App() {
 
   const repeatSong = () => {
     setRepeat(!repeat);
-    
   };
 
   useEffect(() => {
@@ -161,41 +160,20 @@ function App() {
 
   return (
     <div
-      className="h-screen w-screen bg-slate-300 pt-5 "
+      className="h-screen w-screen bg-black opacity-80 pt-5 "
       style={{ fontFamily: "monospace" }}
     >
       <div className="grid justify-center">
-        <div className="text-center ">
-          {data.map((s) => (
-            <div key={s.id}>
-              <button onClick={() => chooseSong(s.id)}>
-                <p
-                  className="py-2 font-extrabold mb-5 text-xl hover:scale-110  active:scale-150 px-4 duration-300 rounded"
-                  style={{
-                    color: song.id === s.id ? "white" : "black",
-                    backgroundColor: song.id === s.id ? "black" : "",
-                    borderColor: song.id === s.id ? "white" : "",
-
-                    borderRadius: song.id === s.id ? "10px" : "",
-                  }}
-                >
-                  {s.name}
-                </p>
-              </button>
-            </div>
-          ))}
-        </div>
-        <div className="grid  justify-center items-center w-fit text-3xl text-white bg-black rounded-lg">
-          <div className="border-4 border-white w-full pb-8 pt-5 gap-x-5 px-24 rounded-lg">
-            <div className="lg:w-[20vw] w-[50vw] overflow-hidden rounded-lg">
-              <p className="text-xl w-full text-center pb-7 animate-x">
+        <div className="grid pb-5 justify-center items-center  w-fit text-3xl text-white bg-black rounded-lg">
+          <div className="border-4 border-white w-full pb-8 pt-5 gap-x-5 px-5 rounded-lg">
+            <div className="lg:w-[40vw] md:w-[40vw] w-[80vw] overflow-hidden  rounded-lg">
+              <p className="text-xl text-center pb-4 animate-x">
                 {song.name}
               </p>
               <div className="flex text-base items-center justify-between gap-x-4">
                 <div>{loadingTimes(currentTime)}</div>
                 <Slider
-                  color="secondary"
-                  style={{ width: "70%", height: "12px" }}
+                  style={{ width: "70%", height: "12px" ,color: 'white'}}
                   onChange={onChange}
                   value={percent}
                 />
@@ -203,7 +181,7 @@ function App() {
               </div>
               <div className="flex justify-between ">
                 <button
-                  style={{ color: shufflee ? "red" : "" }}
+                  style={{ color: shufflee ? "#E90064" : "" }}
                   className="text-red text-xl"
                   onClick={shuffle}
                 >
@@ -237,7 +215,7 @@ function App() {
                   <FiSkipForward />
                 </button>
                 <button
-                  className="text-red text-xl"
+                  className="text-red text-xl active:text-[#E90064]"
                   style={{ color: repeat ? "red" : "" }}
                   onClick={() => repeatSong()}
                 >
@@ -247,6 +225,27 @@ function App() {
             </div>
           </div>
         </div>
+        <div className="text-center ">
+          {data.map((s) => (
+            <div key={s.id}>
+              <button onClick={() => chooseSong(s.id)}>
+                <p
+                  className="py-2 font-extrabold mb-5 text-xl hover:scale-110  active:scale-150 px-4 duration-300 rounded"
+                  style={{
+                    color: song.id === s.id ? "black" : "white",
+                    backgroundColor: song.id === s.id ? "white" : "",
+                    borderColor: song.id === s.id ? "white" : "",
+
+                    borderRadius: song.id === s.id ? "10px" : "",
+                  }}
+                >
+                  {s.name}
+                </p>
+              </button>
+            </div>
+          ))}
+        </div>
+        ;
       </div>
     </div>
   );
